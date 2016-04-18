@@ -1,0 +1,14 @@
+version: '2'
+services:
+    practica7-mysql:
+        container_name: practica7-mysql
+        image: mysql:5.7.11
+        # volumes:
+        #     - ~/volumes/jhipster/practica7/mysql/:/var/lib/mysql/
+        environment:
+            - MYSQL_USER=root
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+            - MYSQL_DATABASE=practica7
+        ports:
+            - 3306:3306
+        command: mysqld --lower_case_table_names=1

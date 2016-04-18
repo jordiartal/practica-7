@@ -1,0 +1,76 @@
+<div>
+    <h2 translate="practica7App.jugador.home.title">Jugadors</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="jugador.new">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span translate="practica7App.jugador.home.createLabel">
+                        Create new Jugador
+                    </span>
+                    <button class="btn btnprimary" uisref="topPlayers">
+                        <span class="glyphicon glyphiconflash"></span>
+                        <span> Top Players </span>
+                    </button>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr>
+                <th><span translate="global.field.id">ID</span></th>
+                <th><span translate="practica7App.jugador.nombre">Nombre</span></th>
+                <th><span translate="practica7App.jugador.fechaNacimiento">FechaNacimiento</span></th>
+                <th><span translate="practica7App.jugador.posicionCampo">PosicionCampo</span></th>
+                <th><span translate="practica7App.jugador.canastasTotales">CanastasTotales</span></th>
+                <th><span translate="practica7App.jugador.rebotesTotales">RebotesTotales</span></th>
+                <th><span translate="practica7App.jugador.asistenciasTotales">AsistenciasTotales</span></th>
+                <th><span translate="practica7App.jugador.faltasTotales">FaltasTotales</span></th>
+                <th><span translate="practica7App.jugador.equipo">equipo</span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="jugador in vm.jugadors track by jugador.id">
+                <td><a ui-sref="jugador-detail({id:jugador.id})">{{jugador.id}}</a></td>
+                <td>{{jugador.nombre}}</td>
+                <td>{{jugador.fechaNacimiento | date:'mediumDate'}}</td>
+                <td>{{jugador.posicionCampo}}</td>
+                <td>{{jugador.canastasTotales}}</td>
+                <td>{{jugador.rebotesTotales}}</td>
+                <td>{{jugador.asistenciasTotales}}</td>
+                <td>{{jugador.faltasTotales}}</td>
+                <td>
+                    <a ui-sref="equipo-detail({id:jugador.equipo.id})">{{jugador.equipo.nombre}}</a>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                ui-sref="jugador-detail({id:jugador.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                            <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="jugador.edit({id:jugador.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="jugador.delete({id:jugador.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                            <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

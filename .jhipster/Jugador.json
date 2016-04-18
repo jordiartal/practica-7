@@ -1,0 +1,45 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "equipo",
+            "otherEntityName": "equipo",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "nombre"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fechaNacimiento",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "posicionCampo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "canastasTotales",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "rebotesTotales",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "asistenciasTotales",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "faltasTotales",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20160414174935",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "jugador",
+    "pagination": "no"
+}
