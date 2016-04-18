@@ -13,7 +13,6 @@ import java.util.List;
  * Spring Data JPA repository for the Jugador entity.
  */
 public interface JugadorRepository extends JpaRepository<Jugador,Long> {
-
-    @Query ( "select jugador from Jugador jugador where jugador.asistenciasTotales>=:asistencias" )
-    Page<Jugador> topPlayers (@Param( "asistencias" ) Integer asistencias, Pageable pageable);
+    @Query("select jugador from Jugador jugador where jugador.asistenciasTotales>=:asistencias")
+    Page<Jugador> topPlayers (@Param("asistencias") Integer asistencias, Pageable pageable);
 }

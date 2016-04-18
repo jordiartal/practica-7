@@ -139,26 +139,25 @@
             }]
         })
     . state ( 'topPlayers' , {
-            parent : 'entity' ,
-            url : '/jugadors/topPlayers' ,
-            data : {
-                authorities : [ 'ROLE_USER' ] ,
-                pageTitle : 'practica7App.jugador.detail.title'
-            } ,
-            views : {
-                'content@' : {
-                    templateUrl : 'scripts/app/entities/jugador/jugadorsTabla.html' ,
-                    controller : 'TopPlayersController'
+            parent:'entity',
+            url:'/jugadors/topPlayers',
+            data:{
+                authorities:[ 'ROLE_USER' ] ,
+                pageTitle:'practica7App.jugador.detail.title'
+            },
+            views:{
+                'content@':{
+                    templateUrl:'app/entities/jugador/jugadorsTabla.html',
+                    controller:'TopPlayersController'
                 }
-            } ,
-            resolve : {
-                translatePartialLoader : [ '$translate' , '$translatePartialLoader' , function
-                    ($translate , $translatePartialLoader) {
-                    $translatePartialLoader. addPart ( 'jugador' );
-                    return $translate. refresh ();
-                }] ,
-                entity : [ '$stateParams' , 'Jugador' , function ($stateParams , Jugador) {
-                    return Jugador. topPlayers ({ asistencias : 50 });
+            },
+            resolve:{
+                translatePartialLoader: [ '$translate' , '$translatePartialLoader' , function($translate , $translatePartialLoader) {
+                    $translatePartialLoader.addPart('jugador');
+                    return $translate.refresh ();
+                }],
+                entity:[ '$stateParams' , 'Jugador' , function ($stateParams , Jugador) {
+                    return Jugador.topPlayers({asistencias:50});
                 }]
             }
         });
