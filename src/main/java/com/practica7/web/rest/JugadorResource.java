@@ -139,9 +139,8 @@ public class JugadorResource {
     @Timed
     public ResponseEntity<List<Jugador>> topPlayers ( @PathVariable Integer asistencias, Pageable pageable)
         throws URISyntaxException {
-        Page<Jugador> page = jugadorRepository .topPlayers(asistencias , pageable);
-        HttpHeaders headers = PaginationUtil. generatePaginationHttpHeaders (page, "/api/jugadors/topPlayers" );
-        return new ResponseEntity<>(page.getContent() , headers , HttpStatus. OK );
+        Page<Jugador> page = jugadorRepository.topPlayers(asistencias,pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders (page, "/jugadors/topPlayers" );
+        return new ResponseEntity<>(page.getContent() , headers , HttpStatus.OK );
     }
-
 }
