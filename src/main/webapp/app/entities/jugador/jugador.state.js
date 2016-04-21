@@ -152,7 +152,8 @@
                     }
                 },
                 resolve: {
-                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function
+                        ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('jugador');
                         return $translate.refresh();
                     }],
@@ -160,7 +161,7 @@
                         return Jugador.topPlayers({asistencias:50});
                     }]
                 }
-            });
+            })
     }
 
-});
+})();

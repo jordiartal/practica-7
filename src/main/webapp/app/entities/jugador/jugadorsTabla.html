@@ -1,61 +1,57 @@
-<div class="table-responsive">
+<div class="table-responsive" xmlns:jugador-detail>
     <h1>Consulta Asistencias</h1>
-    <table class="table tables-triped">
+    <table class="table table-striped">
         <thead>
         <tr>
             <th translate="global.field.id">ID</th>
             <th translate="practica7App.jugador.nombre">Nombre</th>
             <th translate="practica7App.jugador.fechaNacimiento">FechaNacimiento</th>
-            <th translate="practica7App.jugador.posicion">Posicion</th>
+            <th translate="practica7App.jugador.posicionCampo">Posicion</th>
             <th translate="practica7App.jugador.canastasTotales">CanastasTotales</th>
             <th translate="practica7App.jugador.asistenciasTotales">AsistenciasTotales</th>
             <th translate="practica7App.jugador.rebotesTotales">RebotesTotales</th>
-            <th translate="practica7App.jugador.equipo">equipo</th>
+            <th translate="practica7App.jugador.equipo">Equipo</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="jugador in savedPlayers track by jugador.id">
-            <td><a ui-sref="jugador.detail({id:jugador.id})">{{jugador.id}}</a></td>
+        <tr ng-repeat="jugador in savedPlayers | orderBy:'asistenciasTotales'">
+            <td><a ui-sref="jugador-detail({id:jugador.id})">{{jugador.id}}</a></td>
             <td>{{jugador.nombre}}</td>
             <td>{{jugador.fechaNacimiento | date:'mediumDate'}}</td>
-            <td>{{jugador.posicion}}</td>
+            <td>{{jugador.posicionCampo}}</td>
             <td>{{jugador.canastasTotales}}</td>
             <td>{{jugador.asistenciasTotales}}</td>
             <td>{{jugador.rebotesTotales}}</td>
+            <td>{{jugador.faltasTotales}}</td>
             <td>
-                <a ui-sref="equipo.detail({id:jugador.equipo.id})"> {{jugador.equipo.nombre}} </a>
+                <a ui-sref="equipo-detail({id:jugador.equipo.id})">{{jugador.equipo.nombre}}</a>
             </td>
-            <td>
-                <button type="submit" ui-sref="jugador.detail({id:jugador.id})" class="btn btn-info btn-sm">
-                    <span class="glyphicon glyphicon-eye-open"></span> &nbsp;
-                    <span translate="entity.action.view"> View </span>
-                </button>
-                <button type="submit" ui-sref="jugador.edit({id:jugador.id})" class="btn btn-primary btn-sm">
-                    <span class="glyphicon glyphicon-pencil"></span> &nbsp;
-                    <span translate="entity.action.edit"> Edit </span>
-                </button>
-                <button type="submit" ui-sref="jugador.delete({id:jugador.id})" class="btn btn-danger btn-sm">
-                    <span class="glyphicon glyphicon-remove-circle"></span> &nbsp;
-                    <span translate="entity.action.delete">Delete </span>
-                </button>
+            <td class="text-right">
+                <div class="btn-group flex-btn-group-container">
+                    <button type="submit"
+                            ui-sref="jugador-detail({id:jugador.id})"
+                            class="btn btn-info btn-sm">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                        <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                    </button>
+                    <button type="submit"
+                            ui-sref="jugador.edit({id:jugador.id})"
+                            class="btn btn-primary btn-sm">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                    </button>
+                    <button type="submit"
+                            ui-sref="jugador.delete({id:jugador.id})"
+                            class="btn btn-danger btn-sm">
+                        <span class="glyphicon glyphicon-remove-circle"></span>
+                        <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                    </button>
+                </div>
             </td>
         </tr>
         </tbody>
     </table>
-    <nav>
-        <ul class="pagination">
-            <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a> &lt&lt </a></li>
-            <li ng-show="page > 0" ng-click="loadPage(links['prev'] ||0)"><a> &lt </a></li>
-            <li ng-show="page > 1" ng-click="loadPage(page 2)"><a>{{page-1}}</a></li>
-            <li ng-show="page > 0" ng-click="loadPage(page 1)"><a>{{page}}</a></li>
-            <li class="active"><a>{{page+1}}</a></li>
-            <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page+2}}</a></li>
-            <li ng-show="page < links['last'] 1" ng-click="loadPage(page +2)"><a>{{page+3}}</a></li>
-            <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt</a></li>
-            <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a>&gt&gt</a></li>
-        </ul>
-    </nav>
     <button type="submit" onclick="window.history.back()" class="btn btn-info">
         <span class="glyphicon glyphicon-arrow-left"></span> &nbsp
         <span translate="entity.action.back">Back</span>

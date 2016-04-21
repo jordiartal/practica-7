@@ -130,17 +130,16 @@ public class JugadorResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("jugador", id.toString())).build();
     }
 
-    /*
-        GET by numero asistencias
-     */
     @RequestMapping ( value = "/topPlayers/{asistencias}" ,
-        method = RequestMethod. GET ,
-        produces = MediaType. APPLICATION_JSON_VALUE )
+        method = RequestMethod.GET ,
+        produces = MediaType.APPLICATION_JSON_VALUE )
     @Timed
-    public ResponseEntity<List<Jugador>> topPlayers ( @PathVariable Integer asistencias, Pageable pageable)
+    public ResponseEntity<List<Jugador>> topPlayers ( @PathVariable Integer asistencias , Pageable pageable)
         throws URISyntaxException {
-        Page<Jugador> page = jugadorRepository.topPlayers(asistencias,pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders (page, "/jugadors/topPlayers" );
+        Page<Jugador> page = jugadorRepository.topPlayers(asistencias , pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders (page ,"/api/jugadors/topPlayers");
         return new ResponseEntity<>(page.getContent() , headers , HttpStatus.OK );
     }
+
+
 }
